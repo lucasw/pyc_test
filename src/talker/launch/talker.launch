@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <arg name="use_pyc" default="false"/>
+  <group if="$(arg use_pyc)">
+  
+    <node pkg="talker" type="talker.pyc" name="talker_pyc" output="screen"/>
+  </group>
+
+  <group unless="$(arg use_pyc)">
+  
+    <node pkg="talker" type="talker.py" name="talker_py" output="screen"/>
+ 
+  </group>
+</launch>
