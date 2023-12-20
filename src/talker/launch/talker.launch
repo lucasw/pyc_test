@@ -3,9 +3,20 @@
 <launch>
 
   <arg name="use_pyc" default="false"/>
+  <arg name="use_wrapper" default="false"/>
+  <arg name="python_version" default="38"/>
+
   <group if="$(arg use_pyc)">
-  
-    <node pkg="talker" type="talker.pyc" name="talker_pyc" output="screen"/>
+
+    <node pkg="talker" type="talker.cpython-$(arg python_version).pyc" name="talker_pyc"
+        unless="$(arg use_wrapper)"
+        output="screen" />
+
+    <node pkg="talker" type="talker.sh" name="talker_pyc"
+        if="$(arg use_wrapper)"
+        args="$(arg python_version)"
+        output="screen" />
+
   </group>
 
   <group unless="$(arg use_pyc)">

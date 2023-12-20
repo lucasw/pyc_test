@@ -6,7 +6,7 @@ find_package(catkin REQUIRED COMPONENTS std_msgs)
 catkin_package(CATKIN_DEPENDS std_msgs)
 
 catkin_install_python(PROGRAMS
-  scripts/talker.pyc
+  # scripts/talker.pyc
   scripts/talker.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
